@@ -27,7 +27,7 @@ fun App() {
         var selectedDay by remember { mutableStateOf(1) }
         var selectedYear by remember { mutableStateOf(currentYear) }
         var showAgeDialog by remember { mutableStateOf(false) }
-        var calculatedAge by remember { mutableStateOf(0) }
+        var calculatedAge by remember { mutableStateOf(Period.ZERO) }
 
         var monthExpanded by remember { mutableStateOf(false) }
         var dayExpanded by remember { mutableStateOf(false) }
@@ -157,7 +157,7 @@ fun App() {
                 onClick = {
                     val birthDate = LocalDate.of(selectedYear, monthIndex, selectedDay)
                     val today = LocalDate.now()
-                    calculatedAge = Period.between(birthDate, today).years
+                    calculatedAge = Period.between(birthDate, today)
                     showAgeDialog = true
                 }
             ) {
@@ -169,7 +169,9 @@ fun App() {
             AlertDialog(
                 onDismissRequest = { showAgeDialog = false },
                 title = { Text("Your Age") },
-                text = { Text("You are $calculatedAge years old.") },
+                text = {
+                    Text("You are ${calculatedAge.years} years, ${calculatedAge.months} months, and ${calculatedAge.days} days old.")
+                },
                 confirmButton = {
                     Button(onClick = { showAgeDialog = false }) {
                         Text("OK")
