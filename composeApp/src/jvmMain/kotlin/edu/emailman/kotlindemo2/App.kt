@@ -35,8 +35,10 @@ fun App() {
 
         val monthIndex = months.indexOf(selectedMonth) + 1
         val daysInMonth = when (monthIndex) {
-            2 -> if (selectedYear % 4 == 0 && (selectedYear % 100 != 0 || selectedYear % 400 == 0))
-                29 else 28
+            2 -> if (
+                selectedYear % 4 == 0 &&
+                (selectedYear % 100 != 0 ||
+                        selectedYear % 400 == 0)) 29 else 28
             4, 6, 9, 11 -> 30
             else -> 31
         }
