@@ -166,11 +166,20 @@ fun App() {
         }
 
         if (showAgeDialog) {
+            val ageCategory = when (calculatedAge.years) {
+                in 0..12 -> "Youngster"
+                in 13..19 -> "Teenager"
+                in 20..40 -> "Adult"
+                in 41..61 -> "Middle-Aged Adult"
+                in 62..74 -> "Senior Citizen"
+                in 75..84 -> "Very Senior Citizen"
+                else -> "Really Old"
+            }
             AlertDialog(
                 onDismissRequest = { showAgeDialog = false },
                 title = { Text("Your Age") },
                 text = {
-                    Text("You are ${calculatedAge.years} years, ${calculatedAge.months} months, and ${calculatedAge.days} days old.")
+                    Text("You are ${calculatedAge.years} years, ${calculatedAge.months} months, and ${calculatedAge.days} days old.\n\nCategory: $ageCategory")
                 },
                 confirmButton = {
                     Button(onClick = { showAgeDialog = false }) {
