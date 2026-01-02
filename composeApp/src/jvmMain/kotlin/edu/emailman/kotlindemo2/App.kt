@@ -35,7 +35,8 @@ fun App() {
 
         val monthIndex = months.indexOf(selectedMonth) + 1
         val daysInMonth = when (monthIndex) {
-            2 -> if (selectedYear % 4 == 0 && (selectedYear % 100 != 0 || selectedYear % 400 == 0)) 29 else 28
+            2 -> if (selectedYear % 4 == 0 && (selectedYear % 100 != 0 || selectedYear % 400 == 0))
+                29 else 28
             4, 6, 9, 11 -> 30
             else -> 31
         }
@@ -73,8 +74,14 @@ fun App() {
                         onValueChange = {},
                         readOnly = true,
                         label = { Text("Month") },
-                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = monthExpanded) },
-                        modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable).width(150.dp)
+                        trailingIcon =
+                            { ExposedDropdownMenuDefaults
+                                .TrailingIcon(expanded = monthExpanded) },
+                        modifier =
+                            Modifier
+                                .menuAnchor(ExposedDropdownMenuAnchorType
+                                    .PrimaryNotEditable)
+                                .width(150.dp)
                     )
                     ExposedDropdownMenu(
                         expanded = monthExpanded,
@@ -102,8 +109,13 @@ fun App() {
                         onValueChange = {},
                         readOnly = true,
                         label = { Text("Day") },
-                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = dayExpanded) },
-                        modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable).width(100.dp)
+                        trailingIcon =
+                            { ExposedDropdownMenuDefaults
+                                .TrailingIcon(expanded = dayExpanded) },
+                        modifier = Modifier
+                            .menuAnchor(ExposedDropdownMenuAnchorType
+                                .PrimaryNotEditable).
+                            width(100.dp)
                     )
                     ExposedDropdownMenu(
                         expanded = dayExpanded,
@@ -131,8 +143,13 @@ fun App() {
                         onValueChange = {},
                         readOnly = true,
                         label = { Text("Year") },
-                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = yearExpanded) },
-                        modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable).width(120.dp)
+                        trailingIcon =
+                            { ExposedDropdownMenuDefaults
+                                .TrailingIcon(expanded = yearExpanded) },
+                        modifier = Modifier
+                            .menuAnchor(ExposedDropdownMenuAnchorType
+                                .PrimaryNotEditable)
+                            .width(120.dp)
                     )
                     ExposedDropdownMenu(
                         expanded = yearExpanded,
@@ -155,7 +172,8 @@ fun App() {
 
             Button(
                 onClick = {
-                    val birthDate = LocalDate.of(selectedYear, monthIndex, selectedDay)
+                    val birthDate =
+                        LocalDate.of(selectedYear, monthIndex, selectedDay)
                     val today = LocalDate.now()
                     calculatedAge = Period.between(birthDate, today)
                     showAgeDialog = true
@@ -179,7 +197,10 @@ fun App() {
                 onDismissRequest = { showAgeDialog = false },
                 title = { Text("Your Age") },
                 text = {
-                    Text("You are ${calculatedAge.years} years, ${calculatedAge.months} months, and ${calculatedAge.days} days old.\n\nCategory: $ageCategory")
+                    Text("You are ${calculatedAge.years} years, " +
+                            "${calculatedAge.months} months, and " +
+                            "${calculatedAge.days} days old." +
+                            "\n\nCategory: $ageCategory")
                 },
                 confirmButton = {
                     Button(onClick = { showAgeDialog = false }) {
