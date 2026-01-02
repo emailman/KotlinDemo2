@@ -74,7 +74,7 @@ fun App() {
                         readOnly = true,
                         label = { Text("Month") },
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = monthExpanded) },
-                        modifier = Modifier.menuAnchor().width(150.dp)
+                        modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable).width(150.dp)
                     )
                     ExposedDropdownMenu(
                         expanded = monthExpanded,
@@ -103,7 +103,7 @@ fun App() {
                         readOnly = true,
                         label = { Text("Day") },
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = dayExpanded) },
-                        modifier = Modifier.menuAnchor().width(100.dp)
+                        modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable).width(100.dp)
                     )
                     ExposedDropdownMenu(
                         expanded = dayExpanded,
@@ -132,7 +132,7 @@ fun App() {
                         readOnly = true,
                         label = { Text("Year") },
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = yearExpanded) },
-                        modifier = Modifier.menuAnchor().width(120.dp)
+                        modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable).width(120.dp)
                     )
                     ExposedDropdownMenu(
                         expanded = yearExpanded,
